@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = ({key, id, name, email}) => {
+const Card = ({id, name, email}) => {
   return (
     <div className='bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
       <img alt='robots' src={`http://robohash.org/${id}?200x200`}/>
