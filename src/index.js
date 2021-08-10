@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
 
-import { searchRobotsReducer } from './reducers';
+import { searchRobotsReducer, requestRobotsReducer } from './reducers';
 import './styles/index.css';
-import App from './components/AppClass';
+import App from './components/App/AppClass';
 
 const logger = createLogger();
-const store = createStore(searchRobotsReducer, applyMiddleware(logger));
+const rootReducer = combineReducers({ searchRobotsReducer, requestRobotsReducer });
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
 
 ReactDOM.render(
   <React.StrictMode>
